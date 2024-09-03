@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+    <script src="script.js" defer></script>
+    <title>BlastGen</title>
+</head>
+
+<body>
+    <aside>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="active">
+                        <i class='bx bx-code-alt'></i>
+                        <span>BlastGenerator</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-grid-alt"></i>
+                        <span>Explore</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-carousel"></i>
+                        <span>Slideshow</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-collection"></i>
+                        <span>Collections</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-cloud-download"></i>
+                        <span>Downloads</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-chat"></i>
+                        <span>Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bx-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-resize-btn>
+                        <i class="bx bx-chevrons-right"></i>
+                        <span>Collapse</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+
+        <form>
+            <h1>Blast</h1>
+            <h2>Meta-Data</h2>
+            <div>
+                <label for="fileName">Filename:</label><br />
+                <input id="fileName" type="text">
+            </div>
+            <div>
+                <label for="testName">TestName:</label><br />
+                <input id="testName" type="text">
+            </div>
+
+            <button class="btn primary">Add check</button>
+            <p>Add checks to add keywords to look for inside of the code.</p>
+            <div class="checks"></div>
+            <button class="btn primary">Generate BlastTest</button>
+        </form>
+
+    </main>
+</body>
+
+</html>

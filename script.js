@@ -1,3 +1,10 @@
+import {
+    generatePhpTemplate,
+    generateNodeTemplate,
+    generateCSharpTemplate,
+    generatePythonTemplate
+} from './templates.js';
+
 const resizeBtn = document.querySelector("[data-resize-btn]");
 
 resizeBtn.addEventListener("click", function (e) {
@@ -39,26 +46,27 @@ document.forms[0].querySelectorAll("button")[1].addEventListener("click", (event
     const fileName = document.forms[0].querySelectorAll("input[type='text']")[0].value
     let testName = document.forms[0].querySelectorAll("input[type='text']")[1].value;
     testName = testName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+    const language = document.getElementById("language").value;
 
-    const templateBlastTest = `public function test${testName}(): void
-{
-    $mogelijke_antwoorden = [
-        ${values.map(value => '"' + value + '"').join(',\n        ')}
-    ];
-    $studentContent = shell_exec('php -w ' . getenv('SOURCE_DIR') . '${fileName}');
-    $studentContent = preg_replace('/\s+/', '', $studentContent);
+    let templateBlastTest = '';
 
-    $found = false;
-    foreach ($mogelijke_antwoorden as $answer) {
-        $strippedAnswer = preg_replace('/\s+/', '', $answer);
-        if (strpos($studentContent, $strippedAnswer) !== false) {
-            $found = true;
+    switch (language) {
+        case 'php':
+            templateBlastTest = generatePhpTemplate(testName, fileName, values);
             break;
-        }
+        case 'node':
+            templateBlastTest = generateNodeTemplate(testName, fileName, values);
+            break;
+        case 'csharp':
+            templateBlastTest = generateCSharpTemplate(testName, fileName, values);
+            break;
+        case 'python':
+            templateBlastTest = generatePythonTemplate(testName, fileName, values);
+            break;
+        default:
+            alert('Please select a valid programming language.');
+            return;
     }
-
-    $this->assertTrue($found);
-} `;
 
     const pre = document.createElement('pre');
     pre.addEventListener('click', () => {
@@ -66,7 +74,7 @@ document.forms[0].querySelectorAll("button")[1].addEventListener("click", (event
 
         const alert = document.createElement('div');
         alert.className = 'alert alert-success';
-        alert.textContent = 'Blasttest has been copied to your clipboard';
+        alert.textContent = 'BlastTest has been copied to your clipboard';
         document.body.appendChild(alert);
         setTimeout(() => {
             alert.remove();
@@ -75,4 +83,3 @@ document.forms[0].querySelectorAll("button")[1].addEventListener("click", (event
     pre.textContent = templateBlastTest;
     document.querySelector('main').appendChild(pre);
 });
-

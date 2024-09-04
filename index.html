@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
     <title>BlastGen</title>
 </head>
 
@@ -67,8 +67,9 @@
         </nav>
     </aside>
 
-    <main>
+    <h5>NodeJS, Python and C# aren't tested yet!</h5>
 
+    <main>
         <form>
             <h1>Blast</h1>
             <h2>Meta-Data</h2>
@@ -83,10 +84,17 @@
 
             <button class="btn primary">Add check</button>
             <p>Add checks to add keywords to look for inside of the code.</p>
-            <div class="checks"></div>
-            <button class="btn primary">Generate BlastTest</button>
-        </form>
 
+            <div class="checks"></div>
+
+            <button class="btn primary">Generate BlastTest</button> in
+            <select name="language" id="language">
+                <option selected value="php">PHP</option>
+                <option value="node">NodeJS</option>
+                <option value="csharp">C#</option>
+                <option value="python">Python</option>
+            </select>
+        </form>
     </main>
 </body>
 
